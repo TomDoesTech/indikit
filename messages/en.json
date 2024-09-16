@@ -1,0 +1,22 @@
+{
+  "site": {
+    "title": "IndiKit",
+    "description": "A complete kit for your next subscription product."
+  },
+  "hero": {
+    "title": "IndiKit",
+    "subtitle1": "for aspiring",
+    "subtitle2": "founders",
+    "subtitle3": "A complete kit for your next subscription product."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Got questions? We've got answers.",
+    "contact": "Contact us"
+  },
+  "footer": {
+    "follow": "Follow",
+    "support": "Support",
+    "about": "About"
+  }
+}

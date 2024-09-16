@@ -1,0 +1,14 @@
+name = "indikit"
+compatibility_date = "2024-07-29"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[env.preview.vars]
+  DATABASE_URL = "libsql://indi-starter-tomanagle.turso.io"
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = "pk_test_51Pm4BuEee81NPLI4GQhhBej6Jx0PKS8l1I5OViK5t9XAJ9PECM2JKzOVP4dDVMhoVbc4v7tzPSpV5Y60fhfPHd1Q00f5XaEu8x"
+  BASE_URL = "http://localhost:8788"
+
+[env.production.vars]
+  DATABASE_URL = "libsql://indi-starter-tomanagle.turso.io"
+  NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY = "pk_test_51Pm4BuEee81NPLI4GQhhBej6Jx0PKS8l1I5OViK5t9XAJ9PECM2JKzOVP4dDVMhoVbc4v7tzPSpV5Y60fhfPHd1Q00f5XaEu8x"
+  BASE_URL = "https://indikit.pages.dev"

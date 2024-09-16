@@ -1,0 +1,86 @@
+"use client";
+import { useState } from "react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import { Input } from "~/components/ui/input";
+import { Rocket, Mail, User } from "lucide-react";
+import { api } from "~/trpc/react";
+import { SubmitButton } from "./form/SubmitButton";
+
+export function ComingSoon() {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+
+  const createInterestedUser = api.user.createInterestedUser.useMutation({
+    onSuccess() {
+      setEmail("");
+      setName("");
+    },
+  });
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    createInterestedUser.mutate({ email, name });
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-blue-100 to-purple-100 p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="space-y-1">
+          <CardTitle className="flex items-center justify-center text-center text-3xl font-bold">
+            <Rocket className="mr-2 h-6 w-6" />
+            Coming Soon
+          </CardTitle>
+          <CardDescription className="text-center">
+            We are working hard to bring you something amazing. Be the first to
+            know when we launch!
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          {!createInterestedUser.submittedAt ? (
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="flex items-center space-x-2">
+                <User className="text-gray-400" />
+                <Input
+                  type="text"
+                  placeholder="Your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  autoComplete="given-name"
+                />
+              </div>
+              <div className="flex items-center space-x-2">
+                <Mail className="text-gray-400" />
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                />
+              </div>
+              <SubmitButton isLoading={createInterestedUser.isPending}>
+                Notify Me
+              </SubmitButton>
+            </form>
+          ) : (
+            <div className="text-center text-green-600">
+              Thank you for your interest! We will notify you when we launch.
+            </div>
+          )}
+        </CardContent>
+        <CardFooter className="text-center text-sm text-gray-500">
+          Stay tuned for our exciting new product!
+        </CardFooter>
+      </Card>
+    </div>
+  );
+}
