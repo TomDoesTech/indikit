@@ -15,8 +15,8 @@ jobs:
       - name: Publish
         uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: indikit
+          projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
           directory: .next
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
