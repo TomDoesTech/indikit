@@ -1,4 +1,7 @@
+name: Deploy to Cloudflare Pages
+
 on: [push]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -8,15 +11,30 @@ jobs:
     name: Deploy to Cloudflare Pages
     steps:
       - name: Checkout
-        uses: actions/checkout@v3   
-      # Run your project's build step
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # Use the version of pnpm you need
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # Use the Node.js version your project requires
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Build
-        run: npm install && npm run build
+        run: pnpm run build
+
       - name: Publish
         uses: cloudflare/pages-action@v1
         with:
-            accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-            projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
-            directory: .next
-            gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
+          directory: .next
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
