@@ -1,4 +1,5 @@
 import "~/styles/globals.css";
+import dynamic from "next/dynamic";
 import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
@@ -10,6 +11,11 @@ import { Toaster } from "~/components/ui/toaster";
 import { env } from "~/env";
 import { ComingSoon } from "./_components/ComingSoon";
 import en from "../../messages/en.json";
+import { PHProvider } from "./_components/Providers";
+
+const PostHogPageView = dynamic(() => import("./_components/PostHogPageView"), {
+  ssr: false,
+});
 
 export const metadata: Metadata = {
   title: en.site.title,
@@ -27,22 +33,25 @@ export default async function RootLayout({
   const messages = await getMessages();
   return (
     <html lang={locale} className={`${GeistSans.variable}`}>
-      <body>
-        <NextIntlClientProvider messages={messages}>
-          <TRPCReactProvider>
-            {env.NEXT_PUBLIC_COMING_SOON_MODE ? (
-              <ComingSoon />
-            ) : (
-              <div className="flex min-h-full flex-col">
-                <Navbar />
-                <main className="min-h-full flex-1 py-8">{children}</main>
-                <Toaster />
-                <Footer />
-              </div>
-            )}
-          </TRPCReactProvider>
-        </NextIntlClientProvider>
-      </body>
+      <PHProvider>
+        <body>
+          <NextIntlClientProvider messages={messages}>
+            <TRPCReactProvider>
+              {env.NEXT_PUBLIC_COMING_SOON_MODE ? (
+                <ComingSoon />
+              ) : (
+                <div className="flex min-h-full flex-col">
+                  <Navbar />
+                  <main className="min-h-full flex-1 py-8">{children}</main>
+                  <Toaster />
+                  <Footer />
+                </div>
+              )}
+              <PostHogPageView />
+            </TRPCReactProvider>
+          </NextIntlClientProvider>
+        </body>
+      </PHProvider>
     </html>
   );
 }

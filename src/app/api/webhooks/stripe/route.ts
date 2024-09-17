@@ -1,5 +1,4 @@
 import "server-only";
-import posthog from "posthog-js";
 import type Stripe from "stripe";
 import { env } from "~/env";
 import { logger } from "~/lib/logger";
@@ -51,10 +50,6 @@ export async function POST(req: Request) {
       case "customer.subscription.updated":
       case "customer.subscription.deleted":
         const subscription = event.data.object;
-        posthog.capture("stripe_subscription_event", {
-          event: event.type,
-          ...(event.data.object.metadata ?? {}),
-        });
         await manageSubscriptionStatusChange(subscription.id);
         break;
 

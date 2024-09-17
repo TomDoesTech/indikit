@@ -39,6 +39,8 @@ jobs:
             echo "STRIPE_WEBHOOK_SECRET=deploy" >> .env
             echo "RESEND_API_KEY=deploy" >> .env
             echo "EMAIL_FROM=deploy" >> .env
+            echo "NEXT_PUBLIC_POSTHOG_KEY=deploy" >> .env
+            echo "NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com" >> .env
 
       - name: Install Wrangler
         run: pnpm add -g wrangler
