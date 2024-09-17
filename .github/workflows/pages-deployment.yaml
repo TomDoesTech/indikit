@@ -27,14 +27,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Build
-        run: pnpm run build
-
-      - name: Publish
-        uses: cloudflare/pages-action@v1
-        with:
-          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
-          directory: .next
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PROJECT_NAME: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
+        run: pnpm run deploy
