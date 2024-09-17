@@ -8,15 +8,15 @@ jobs:
     name: Deploy to Cloudflare Pages
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3   
       # Run your project's build step
       # - name: Build
       #   run: npm install && npm run build
       - name: Publish
         uses: cloudflare/pages-action@v1
         with:
-          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
-          directory: .next
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+            accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+            apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+            projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
+            directory: .next
+            gitHubToken: ${{ secrets.GITHUB_TOKEN }}
