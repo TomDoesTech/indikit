@@ -30,13 +30,13 @@ jobs:
       - name: setup environment variables
         run: |
             touch .env
-            echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> .env
-            echo "TURSO_AUTH_TOKEN=${{ secrets.TURSO_AUTH_TOKEN }}" >> .env
-            echo "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" >> .env
-            echo "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=${{ secrets.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY }}" >> .env
-            echo "STRIPE_WEBHOOK_SECRET=${{ secrets.STRIPE_WEBHOOK_SECRET }}" >> .env
-            echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .env
-            echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> .env
+            echo "DATABASE_URL=deploy" >> .env
+            echo "TURSO_AUTH_TOKEN=deploy" >> .env
+            echo "STRIPE_SECRET_KEY=deploy" >> .env
+            echo "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=deploy" >> .env
+            echo "STRIPE_WEBHOOK_SECRET=deploy" >> .env
+            echo "RESEND_API_KEY=deploy" >> .env
+            echo "EMAIL_FROM=deploy" >> .env
 
       - name: Install Wrangler
         run: pnpm add -g wrangler
