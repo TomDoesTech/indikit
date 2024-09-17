@@ -2,6 +2,9 @@
 
 Indikit is a starter kit for building a SaaS application with Next.js, TailwindCSS, Shadcn/UI, tRPC, Lucia Auth, Drizzle ORM, and Stripe. It is designed to be a starting point for building a modern, scalable, and secure SaaS application.
 
+## Why?
+I want a starter kit that is ready to deploy, has all the features that every app needs, and no more. I don't want to have to figure out what needs to be deleted before I can start building and I want the deployment solution to just work. IndiKit is ready to be cloned and deployed as-is.
+
 ## Features
 - [x] Deployable to CloudFlare pages
 - [x] GitHub action for deployments
