@@ -18,5 +18,9 @@
     "follow": "Follow",
     "support": "Support",
     "about": "About"
+  },
+  "comingSoon": {
+    "title": "Coming Soon",
+    "subtitle": "We are working hard to bring you something amazing. Be the first to know when we launch!"
   }
 }

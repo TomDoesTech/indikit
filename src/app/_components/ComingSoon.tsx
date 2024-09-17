@@ -12,8 +12,10 @@ import { Input } from "~/components/ui/input";
 import { Rocket, Mail, User } from "lucide-react";
 import { api } from "~/trpc/react";
 import { SubmitButton } from "./form/SubmitButton";
+import { useTranslations } from "next-intl";
 
 export function ComingSoon() {
+  const t = useTranslations("comingSoon");
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
 
@@ -35,11 +37,10 @@ export function ComingSoon() {
         <CardHeader className="space-y-1">
           <CardTitle className="flex items-center justify-center text-center text-3xl font-bold">
             <Rocket className="mr-2 h-6 w-6" />
-            Coming Soon
+            {t("title")}
           </CardTitle>
           <CardDescription className="text-center">
-            We are working hard to bring you something amazing. Be the first to
-            know when we launch!
+            {t("subtitle")}
           </CardDescription>
         </CardHeader>
         <CardContent>
