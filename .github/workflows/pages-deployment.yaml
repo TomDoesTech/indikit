@@ -38,6 +38,9 @@ jobs:
             echo "RESEND_API_KEY=${{ secrets.RESEND_API_KEY }}" >> .env
             echo "EMAIL_FROM=${{ secrets.EMAIL_FROM }}" >> .env
 
+      - name: Install Wrangler
+        run: pnpm add -g wrangler
+
       - name: Deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
