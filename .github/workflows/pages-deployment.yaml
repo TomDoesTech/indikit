@@ -15,8 +15,8 @@ jobs:
       - name: Publish
         uses: cloudflare/pages-action@v1
         with:
-            accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+            accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
             apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-            projectName: ${{ env.CLOUDFLARE_PROJECT_NAME }}
+            projectName: ${{ vars.CLOUDFLARE_PROJECT_NAME }}
             directory: .next
             gitHubToken: ${{ secrets.GITHUB_TOKEN }}
