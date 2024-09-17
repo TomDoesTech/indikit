@@ -1,4 +1,4 @@
-# Indikit
+# <img src="public/favicon.ico" alt="Indikit" width="20" /> Indikit
 
 Indikit is a starter kit for building a SaaS application with Next.js, TailwindCSS, Shadcn/UI, tRPC, Lucia Auth, Drizzle ORM, and Stripe. It is designed to be a starting point for building a modern, scalable, and secure SaaS application.
 
