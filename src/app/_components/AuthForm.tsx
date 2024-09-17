@@ -33,6 +33,7 @@ import {
 import { Alert, AlertDescription, AlertTitle } from "~/components/ui/alert";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const pages = {
   login: {
@@ -52,7 +53,7 @@ function AuthFormContent({
 }) {
   const utils = api.useUtils();
   const router = useRouter();
-
+  const t = useTranslations("auth");
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect") ?? "/";
 
@@ -98,9 +99,9 @@ function AuthFormContent({
       <div className="mx-auto max-w-[350px]">
         <Alert>
           <CheckCircledIcon className="h-4 w-4 text-green-600" />
-          <AlertTitle>Success</AlertTitle>
+          <AlertTitle>{t("register.success.title")}</AlertTitle>
           <AlertDescription>
-            You have successfully registered. Please check your email to verify
+            {t("register.success.description")}
             your account.
           </AlertDescription>
         </Alert>
@@ -113,16 +114,14 @@ function AuthFormContent({
       <div className="mx-auto max-w-[350px]">
         <Alert>
           <ExclamationTriangleIcon className="h-4 w-4 text-red-700" />
-          <AlertTitle>Please verify your email</AlertTitle>
+          <AlertTitle>{t("login.verifyEmail.title")}</AlertTitle>
           <AlertDescription>
-            <p className="mb-4">
-              Before you login, you need to verify your email.
-            </p>
+            <p className="mb-4">{t("login.verifyEmail.description")}</p>
             <Link
               href="/auth/resend-verification"
               className={buttonVariants({ variant: "outline" })}
             >
-              Resend verification email
+              {t("login.verifyEmail.button")}
             </Link>
           </AlertDescription>
         </Alert>
@@ -133,10 +132,8 @@ function AuthFormContent({
   return (
     <Card className="w-[350px]">
       <CardHeader>
-        <CardTitle>Welcome</CardTitle>
-        <CardDescription>
-          Login or create an account to get started.
-        </CardDescription>
+        <CardTitle>{t("title")}</CardTitle>
+        <CardDescription>{t("subtitle")}</CardDescription>
 
         {login.isError ? (
           <Alert>

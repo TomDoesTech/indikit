@@ -14,7 +14,6 @@ export const env = createEnv({
     EMAIL_FROM: z.string(),
     BASE_URL: z.string().url(),
     STRIPE_WEBHOOK_SECRET: z.string(),
-    COMING_SOON_MODE: z.boolean().default(true),
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
@@ -27,12 +26,14 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
+    NEXT_PUBLIC_COMING_SOON_MODE: z.boolean().default(true),
   },
 
   /**
    * You can't destruct `process.env` as a regular object in the Next.js edge runtimes (e.g.
    * middlewares) or client-side so we need to destruct manually.
    */
+
   runtimeEnv: {
     DATABASE_URL: process.env.DATABASE_URL,
     TURSO_AUTH_TOKEN: process.env.TURSO_AUTH_TOKEN,
@@ -44,7 +45,8 @@ export const env = createEnv({
     EMAIL_FROM: process.env.EMAIL_FROM ?? "Acme <onboarding@resend.dev>",
     BASE_URL: process.env.BASE_URL ?? "http://localhost:3000",
     NODE_ENV: process.env.NODE_ENV,
-    COMING_SOON_MODE: process.env.COMING_SOON_MODE === "true",
+    NEXT_PUBLIC_COMING_SOON_MODE:
+      process.env.NEXT_PUBLIC_COMING_SOON_MODE === "true",
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

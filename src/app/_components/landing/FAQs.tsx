@@ -4,9 +4,26 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "~/components/ui/accordion";
-import { faqs } from "~/shared/strings";
 import { LargeHeading } from "../Text";
 import { useTranslations } from "next-intl";
+
+const faqs = [
+  {
+    question: "Is this kit free?",
+    answer: "Yes. Use it as you please",
+    value: "item-1",
+  },
+  {
+    question: "Can I use this in a commercial project?",
+    answer: "Yes. Use it as you please",
+    value: "item-2",
+  },
+  {
+    question: "I love it! Can I donate to the creator?",
+    answer: "Yes. you can buy me a coffee at https://buymeacoffee.com/tomn",
+    value: "item-3",
+  },
+] as const;
 
 export function FAQ() {
   const t = useTranslations("faq");

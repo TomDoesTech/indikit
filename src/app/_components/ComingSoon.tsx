@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
@@ -69,18 +68,13 @@ export function ComingSoon() {
                 />
               </div>
               <SubmitButton isLoading={createInterestedUser.isPending}>
-                Notify Me
+                {t("cta")}
               </SubmitButton>
             </form>
           ) : (
-            <div className="text-center text-green-600">
-              Thank you for your interest! We will notify you when we launch.
-            </div>
+            <div className="text-center text-green-600">{t("thankYou")}</div>
           )}
         </CardContent>
-        <CardFooter className="text-center text-sm text-gray-500">
-          Stay tuned for our exciting new product!
-        </CardFooter>
       </Card>
     </div>
   );

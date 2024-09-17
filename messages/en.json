@@ -1,7 +1,11 @@
 {
   "site": {
     "title": "IndiKit",
-    "description": "A complete kit for your next subscription product."
+    "description": "A complete kit for your next subscription product.",
+    "profile": {
+      "title": "Profile",
+      "description": "Manage your profile settings."
+    }
   },
   "hero": {
     "title": "IndiKit",
@@ -21,6 +25,47 @@
   },
   "comingSoon": {
     "title": "Coming Soon",
-    "subtitle": "We are working hard to bring you something amazing. Be the first to know when we launch!"
+    "subtitle": "We are working hard to bring you something amazing. Be the first to know when we launch!",
+    "cta": "Notify Me",
+    "thankYou": "Thank you for your interest! We will notify you when we launch."
+  },
+  "auth": {
+    "title": "Welcome",
+    "subtitle": "Login or create an account to get started.",
+    "email": "Email",
+    "password": "Password",
+    "register": {
+      "success": {
+        "title": "Success",
+        "description": "You have successfully registered. Please check your email to verify your account."
+      }
+    },
+    "login": {
+      "verifyEmail": {
+        "title": "Please verify your email",
+        "description": "Before you login, you need to verify your email.",
+        "button": "Resend verification email"
+      }
+    }
+  },
+  "forgotPassword": {
+    "subject": "Please reset your password",
+    "preview": "Please reset your password",
+    "heading": "Please reset your password",
+    "button": "RESET PASSWORD",
+    "or": "or",
+    "intendedFor": "This reset password request was intended for",
+    "ignoreIfNotExpected": "If you were not expecting this login link, you can ignore this email.",
+    "copyAndPaste": "copy and paste this URL into your browser:"
+  },
+  "verifyEmail": {
+    "subject": "Please verify your email",
+    "preview": "Please verify your email",
+    "heading": "Please verify your email",
+    "button": "VERIFY EMAIL",
+    "or": "or",
+    "intendedFor": "This verification request was intended for",
+    "ignoreIfNotExpected": "If you were not expecting this login link, you can ignore this email.",
+    "copyAndPaste": "copy and paste this URL into your browser:"
   }
 }

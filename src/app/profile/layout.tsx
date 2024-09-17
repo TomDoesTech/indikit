@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 import { redirect } from "next/navigation";
-import { site } from "~/shared/strings";
 import { api } from "~/trpc/server";
+import { site } from "../../../messages/en.json";
 
 export const runtime = "edge";
 

@@ -27,6 +27,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+        # The Zod schema in env.mjs expects these environment variables to be set
+        # they don't have to be real values, just pass validation so we can build
       - name: setup environment variables
         run: |
             touch .env

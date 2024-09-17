@@ -30,7 +30,7 @@ export default async function RootLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <TRPCReactProvider>
-            {env.COMING_SOON_MODE ? (
+            {env.NEXT_PUBLIC_COMING_SOON_MODE ? (
               <ComingSoon />
             ) : (
               <div className="flex min-h-full flex-col">
