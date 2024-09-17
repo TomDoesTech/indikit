@@ -7,13 +7,13 @@ export const env = createEnv({
    * isn't built with invalid env vars.
    */
   server: {
-    DATABASE_URL: z.string().url().optional(),
-    TURSO_AUTH_TOKEN: z.string().optional(),
-    STRIPE_SECRET_KEY: z.string().optional(),
-    RESEND_API_KEY: z.string().optional(),
-    EMAIL_FROM: z.string().optional(),
-    BASE_URL: z.string().url().optional(),
-    STRIPE_WEBHOOK_SECRET: z.string().optional(),
+    DATABASE_URL: z.string().url(),
+    TURSO_AUTH_TOKEN: z.string(),
+    STRIPE_SECRET_KEY: z.string(),
+    RESEND_API_KEY: z.string(),
+    EMAIL_FROM: z.string(),
+    BASE_URL: z.string().url(),
+    STRIPE_WEBHOOK_SECRET: z.string(),
     COMING_SOON_MODE: z.boolean().default(true),
     NODE_ENV: z
       .enum(["development", "test", "production"])
@@ -26,7 +26,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().optional(),
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string(),
   },
 
   /**
