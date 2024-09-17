@@ -27,6 +27,8 @@ Indikit is a starter kit for building a SaaS application with Next.js, TailwindC
 ## Support
 If you find any issues or have any suggestions, jump on to [Discord](https://discord.gg/4ae2Esm6P7) or tag me on [X](https://x.com/tomdoes_tech).
 
+This project is completely free to use with no restrictions, or warranties. If you want to support me you can buy me a coffee [here](https://buymeacoffee.com/tomn).
+
 ## Setup
 ### Stripe
 Create an account and a project in Stripe. Create a new product and price. Update the variables in the .env file. For links to the billing portal to work, you need to save the settings here: https://dashboard.stripe.com/test/settings/billing/portal
