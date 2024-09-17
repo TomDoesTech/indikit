@@ -11,6 +11,7 @@ import {
   registerSchema,
   resendVerificationEmailSchema,
   resetPasswordSchema,
+  userSchema,
 } from "~/shared/schema";
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
@@ -34,7 +35,7 @@ import {
 import { lucia } from "~/lib/auth";
 
 export const authRouter = createTRPCRouter({
-  user: publicProcedure.query(async ({ ctx }) => {
+  user: publicProcedure.output(userSchema).query(async ({ ctx }) => {
     const { user } = ctx;
     return user;
   }),

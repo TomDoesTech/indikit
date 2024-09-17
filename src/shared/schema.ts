@@ -79,3 +79,11 @@ export const addInterestedUserSchema = z.object({
   email: z.string().email(),
   name: z.string().min(2),
 });
+
+export const userSchema = z
+  .object({
+    id: z.string(),
+    name: z.string(),
+    email: z.string().email(),
+  })
+  .nullable();

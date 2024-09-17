@@ -62,6 +62,7 @@ function AuthFormContent({
       await utils.auth.user.invalidate(undefined, {
         refetchType: "all",
       });
+      router.refresh();
       router.push("/");
     },
   });

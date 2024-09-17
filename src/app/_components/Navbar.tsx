@@ -23,6 +23,7 @@ import { api } from "~/trpc/react";
 import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 import { PiHandCoinsBold } from "react-icons/pi";
+import { type User } from "lucia";
 
 function AuthenticatedMenu() {
   const router = useRouter();
@@ -35,6 +36,7 @@ function AuthenticatedMenu() {
       await utils.auth.user.invalidate(undefined, {
         refetchType: "all",
       });
+      router.refresh();
       router.push("/auth/login");
     },
   });
@@ -121,20 +123,28 @@ function UnauthenticatedMenu() {
 }
 
 function UserMenu() {
-  const user = api.auth.user.useQuery();
+  const { data: user, isPending } = api.auth.user.useQuery();
 
-  if (user.isPending) {
+  if (isPending) {
     return null;
   }
 
-  if (user.data) {
+  if (user) {
     return <AuthenticatedMenu />;
   }
 
   return <UnauthenticatedMenu />;
 }
 
-export function Navbar() {
+export function Navbar({ initialUser }: { initialUser: User | null }) {
+  const utils = api.useUtils();
+
+  React.useEffect(() => {
+    if (initialUser) {
+      utils.auth.user.setData(undefined, initialUser);
+    }
+  }, [initialUser, utils.auth.user]);
+
   return (
     <header className="w-full border-b-2">
       <div className="container mx-auto flex items-center py-2">

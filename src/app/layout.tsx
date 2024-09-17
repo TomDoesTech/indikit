@@ -12,6 +12,7 @@ import { env } from "~/env";
 import { ComingSoon } from "./_components/ComingSoon";
 import en from "../../messages/en.json";
 import { PHProvider } from "./_components/Providers";
+import { api } from "~/trpc/server";
 
 const PostHogPageView = dynamic(() => import("./_components/PostHogPageView"), {
   ssr: false,
@@ -28,6 +29,8 @@ export default async function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale();
 
+  const user = await api.auth.user();
+
   // Providing all messages to the client
   // side is the easiest way to get started
   const messages = await getMessages();
@@ -41,12 +44,13 @@ export default async function RootLayout({
                 <ComingSoon />
               ) : (
                 <div className="flex min-h-full flex-col">
-                  <Navbar />
+                  <Navbar initialUser={user} />
                   <main className="min-h-full flex-1 py-8">{children}</main>
                   <Toaster />
                   <Footer />
                 </div>
               )}
+
               <PostHogPageView />
             </TRPCReactProvider>
           </NextIntlClientProvider>
