@@ -30,7 +30,7 @@ jobs:
       - name: setup environment variables
         run: |
             touch .env
-            echo "DATABASE_URL=deploy" >> .env
+            echo "DATABASE_URL=libsql://example.turso.io" >> .env
             echo "TURSO_AUTH_TOKEN=deploy" >> .env
             echo "STRIPE_SECRET_KEY=deploy" >> .env
             echo "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=deploy" >> .env
