@@ -14,6 +14,8 @@ import en from "../../messages/en.json";
 import { PHProvider } from "./_components/Providers";
 import { api } from "~/trpc/server";
 
+export const runtime = "edge";
+
 const PostHogPageView = dynamic(() => import("./_components/PostHogPageView"), {
   ssr: false,
 });
