@@ -10,9 +10,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import { Toaster } from "~/components/ui/toaster";
 import { env } from "~/env";
 import { ComingSoon } from "./_components/ComingSoon";
-import en from "../../messages/en.json";
 import { PHProvider } from "./_components/Providers";
-import { api } from "~/trpc/server";
 
 export const runtime = "edge";
 
@@ -21,8 +19,8 @@ const PostHogPageView = dynamic(() => import("./_components/PostHogPageView"), {
 });
 
 export const metadata: Metadata = {
-  title: en.site.title,
-  description: en.site.description,
+  title: "IndiKit",
+  description: "Subscription SaaS starter kit",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -30,8 +28,6 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const locale = await getLocale();
-
-  const user = await api.auth.user();
 
   // Providing all messages to the client
   // side is the easiest way to get started
@@ -46,7 +42,7 @@ export default async function RootLayout({
                 <ComingSoon />
               ) : (
                 <div className="flex min-h-full flex-col">
-                  <Navbar initialUser={user} />
+                  <Navbar />
                   <main className="min-h-full flex-1 py-8">{children}</main>
                   <Toaster />
                   <Footer />

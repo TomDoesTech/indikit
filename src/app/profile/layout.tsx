@@ -1,13 +1,12 @@
 import { type Metadata } from "next";
 import { redirect } from "next/navigation";
 import { api } from "~/trpc/server";
-import { site } from "../../../messages/en.json";
 
 export const runtime = "edge";
 
 export const metadata: Metadata = {
-  title: `${site.profile.title} | ${site.title}`,
-  description: site.profile.description,
+  title: "Profile | IndiKit",
+  description: "Profile page",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

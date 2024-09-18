@@ -135,15 +135,7 @@ function UserMenu() {
   return <UnauthenticatedMenu />;
 }
 
-export function Navbar({ initialUser }: { initialUser: User | null }) {
-  const utils = api.useUtils();
-
-  React.useEffect(() => {
-    if (initialUser) {
-      utils.auth.user.setData(undefined, initialUser);
-    }
-  }, [initialUser, utils.auth.user]);
-
+export function Navbar() {
   return (
     <header className="w-full border-b-2">
       <div className="container mx-auto flex items-center py-2">

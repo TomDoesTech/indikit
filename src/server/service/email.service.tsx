@@ -3,7 +3,6 @@ import { Resend } from "resend";
 import VerificationEmail from "../../lib/email/VerifyEmail";
 import ForgotPasswordEmail from "~/lib/email/ForgotPassword";
 import { env } from "~/env";
-import en from "../../../messages/en.json";
 
 export const runtime = "edge";
 
@@ -23,7 +22,7 @@ export async function sendVerificationEmail({
   await resend.emails.send({
     from: env.EMAIL_FROM,
     to,
-    subject: en.verifyEmail.subject,
+    subject: "Verify your email",
     react: <VerificationEmail url={url} email={to} />,
   });
 }
@@ -40,7 +39,7 @@ export async function sendForgotPasswordEmail({
   await resend.emails.send({
     from: env.EMAIL_FROM,
     to,
-    subject: en.forgotPassword.subject,
+    subject: "Reset your password",
     react: <ForgotPasswordEmail url={url} email={to} />,
   });
 }
