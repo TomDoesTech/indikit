@@ -36,8 +36,7 @@ function AuthenticatedMenu() {
       await utils.auth.user.invalidate(undefined, {
         refetchType: "all",
       });
-      router.refresh();
-      router.push("/auth/login");
+      window.location.href = "/auth/login";
     },
   });
 

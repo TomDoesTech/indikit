@@ -62,8 +62,7 @@ function AuthFormContent({
       await utils.auth.user.invalidate(undefined, {
         refetchType: "all",
       });
-      router.refresh();
-      router.push("/");
+      window.location.href = redirect;
     },
   });
   const register = api.auth.register.useMutation({});
